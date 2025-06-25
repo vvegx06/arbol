@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Arbol {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Asegúrate de que este campo sea autoincremental
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id; 
     private String nombreComun;
     private String tipoFlor;

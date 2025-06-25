@@ -22,38 +22,38 @@ public class ArbolController {
 
     @GetMapping("/nuevo")
     public String mostrarFormularioNuevoArbol(Model model) {
-        model.addAttribute("arbol", new Arbol()); // Crea un nuevo objeto Arbol
-        return "nuevo_arbol"; // Nombre de la plantilla para crear un nuevo árbol
+        model.addAttribute("arbol", new Arbol()); 
+        return "nuevo_arbol"; 
     }
 
     @PostMapping("/nuevo")
     public String agregarNuevoArbol(@ModelAttribute Arbol arbol) {
-        arbolRepository.save(arbol); // Guarda el nuevo árbol en la base de datos
-        return "redirect:/arboles"; // Redirige a la lista de árboles
+        arbolRepository.save(arbol); 
+        return "redirect:/arboles"; 
     }
 
     @GetMapping("/editar/{id}")
     public String mostrarFormularioDeEditarArbol(@PathVariable Long id, Model model) {
         Arbol arbol = arbolRepository.findById(id).orElseThrow();
         model.addAttribute("arbol", arbol);
-        return "editar_arbol"; // Nombre de la plantilla para editar
+        return "editar_arbol"; 
     }
 
     @PostMapping("/editar")
     public String actualizarArbol(@ModelAttribute Arbol arbol) {
-        arbolRepository.save(arbol); // Guarda los cambios en la base de datos
-        return "redirect:/arboles"; // Redirige a la lista de árboles
+        arbolRepository.save(arbol); 
+        return "redirect:/arboles"; 
     }
 
     @GetMapping
     public String listarArboles(Model model) {
-        model.addAttribute("arboles", arbolRepository.findAll()); // Obtiene todos los árboles
-        return "arboles"; // Nombre de la plantilla para listar árboles
+        model.addAttribute("arboles", arbolRepository.findAll()); 
+        return "arboles"; 
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminarArbol(@PathVariable Long id) {
-        arbolRepository.deleteById(id); // Elimina el árbol por ID
-        return "redirect:/arboles"; // Redirige a la lista de árboles
+        arbolRepository.deleteById(id); 
+        return "redirect:/arboles"; 
     }
 }

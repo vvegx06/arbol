@@ -20,8 +20,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <th>Nombre Común</th>
                         <th>Tipo de Flor</th>
                         <th>Dureza de Madera</th>
-                        <th>Altura Promedio (m)</th> <!-- Columna para altura promedio -->
-                        <th>Ruta de Imagen</th> <!-- Columna para ruta de imagen -->
+                        <th>Altura Promedio (m)</th> 
+                        <th>Ruta de Imagen</th> 
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -31,8 +31,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <td th:text="${arbol.nombreComun}"></td>
                         <td th:text="${arbol.tipoFlor}"></td>
                         <td th:text="${arbol.durezaMadera}"></td>
-                        <td th:text="${arbol.alturaPromedio}"></td> <!-- Mostrar altura promedio -->
-                        <td th:text="${arbol.rutaImagen}"></td> <!-- Mostrar ruta de imagen -->
+                        <td th:text="${arbol.alturaPromedio}"></td> 
+                        <td th:text="${arbol.rutaImagen}"></td> 
                         <td>
                             <a th:href="@{/arboles/editar/{id}(id=${arbol.id})}" class="btn btn-warning">Editar</a>
                             <a th:href="@{/arboles/eliminar/{id}(id=${arbol.id})}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este árbol?');">Eliminar</a>
