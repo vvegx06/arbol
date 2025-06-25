@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editar Árbol</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="mt-5">Editar Árbol</h2>
+            <form action="/arboles/editar" method="post">
+                <input type="hidden" name="id" th:value="${arbol.id}"/> <!-- Campo oculto para el ID -->
+                <div class="form-group">
+                    <label for="nombreComun">Nombre Común</label>
+                    <input type="text" class="form-control" id="nombreComun" name="nombreComun" th:value="${arbol.nombreComun}" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipoFlor">Tipo de Flor</label>
+                    <input type="text" class="form-control" id="tipoFlor" name="tipoFlor" th:value="${arbol.tipoFlor}" required>
+                </div>
+                <div class="form-group">
+                    <label for="durezaMadera">Dureza de Madera</label>
+                    <input type="number" step="0.01" class="form-control" id="durezaMadera" name="durezaMadera" th:value="${arbol.durezaMadera}" required>
+                </div>
+                <div class="form-group">
+                    <label for="rutaImagen">Ruta de Imagen</label>
+                    <input type="text" class="form-control" id="rutaImagen" name="rutaImagen" th:value="${arbol.rutaImagen}" required>
+                </div>
+                <button type="submit" class="btn btn-success">Actualizar</button>
+                <a href="/arboles" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

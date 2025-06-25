@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Árboles</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="mt-5">Lista de Árboles</h2>
+            <a href="/arboles/nuevo" class="btn btn-primary mb-3">Agregar Árbol</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Común</th>
+                        <th>Tipo de Flor</th>
+                        <th>Dureza de Madera</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="arbol : ${arboles}">
+                        <td th:text="${arbol.id}"></td>
+                        <td th:text="${arbol.nombreComun}"></td>
+                        <td th:text="${arbol.tipoFlor}"></td>
+                        <td th:text="${arbol.durezaMadera}"></td>
+                        <td>
+                            <a th:href="@{/arboles/editar/{id}(id=${arbol.id})}" class="btn btn-warning">Editar</a>
+                            <a th:href="@{/arboles/eliminar/{id}(id=${arbol.id})}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
