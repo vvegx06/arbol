@@ -5,20 +5,22 @@
 package Practica01.Web.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 import jakarta.persistence.Id;
 
 @Entity
 public class Arbol {
-
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Asegúrate de que este campo sea autoincremental
+    private Long id; 
     private String nombreComun;
     private String tipoFlor;
     private Float durezaMadera;
     private String rutaImagen;
+    private Float alturaPromedio;
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -58,4 +60,14 @@ public class Arbol {
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
     }
+
+    public Float getAlturaPromedio() {
+        return alturaPromedio;
+    }
+
+    public void setAlturaPromedio(Float alturaPromedio) {
+        this.alturaPromedio = alturaPromedio;
+    }
+    
+    
 }

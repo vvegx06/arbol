@@ -20,41 +20,40 @@ public class ArbolController {
     @Autowired
     private ArbolRepository arbolRepository;
 
-    @GetMapping
-    public String listarArboles(Model model) {
-        List<Arbol> arboles = arbolRepository.findAll();
-        model.addAttribute("arboles", arboles);
-        return "arboles";
-    }
-
     @GetMapping("/nuevo")
-    public String mostrarFormularioDeNuevoArbol(Model model) {
-        model.addAttribute("arbol", new Arbol());
-        return "nuevo_arbol";
+    public String mostrarFormularioNuevoArbol(Model model) {
+        model.addAttribute("arbol", new Arbol()); // Crea un nuevo objeto Arbol
+        return "nuevo_arbol"; // Nombre de la plantilla para crear un nuevo árbol
     }
 
-    @PostMapping
-    public String guardarArbol(@ModelAttribute Arbol arbol) {
-        arbolRepository.save(arbol);
-        return "redirect:/arboles";
+    @PostMapping("/nuevo")
+    public String agregarNuevoArbol(@ModelAttribute Arbol arbol) {
+        arbolRepository.save(arbol); // Guarda el nuevo árbol en la base de datos
+        return "redirect:/arboles"; // Redirige a la lista de árboles
     }
 
     @GetMapping("/editar/{id}")
     public String mostrarFormularioDeEditarArbol(@PathVariable Long id, Model model) {
         Arbol arbol = arbolRepository.findById(id).orElseThrow();
         model.addAttribute("arbol", arbol);
-        return "editar_arbol";
+        return "editar_arbol"; // Nombre de la plantilla para editar
     }
 
     @PostMapping("/editar")
     public String actualizarArbol(@ModelAttribute Arbol arbol) {
-        arbolRepository.save(arbol); 
-        return "redirect:/arboles"; 
+        arbolRepository.save(arbol); // Guarda los cambios en la base de datos
+        return "redirect:/arboles"; // Redirige a la lista de árboles
+    }
+
+    @GetMapping
+    public String listarArboles(Model model) {
+        model.addAttribute("arboles", arbolRepository.findAll()); // Obtiene todos los árboles
+        return "arboles"; // Nombre de la plantilla para listar árboles
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminarArbol(@PathVariable Long id) {
-        arbolRepository.deleteById(id);
-        return "redirect:/arboles";
+        arbolRepository.deleteById(id); // Elimina el árbol por ID
+        return "redirect:/arboles"; // Redirige a la lista de árboles
     }
 }
